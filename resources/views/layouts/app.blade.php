@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets') }}/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="{{ asset('assets') }}/img/favicon.png">
+  {{-- <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets') }}/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="{{ asset('assets') }}/img/favicon.png"> --}}
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <!-- Extra details for Live View on GitHub Pages -->
   <title>
@@ -24,7 +24,11 @@
 <body class="{{ $class ?? '' }}">
   <div class="wrapper">
     @auth
-      @include('layouts.page_template.auth')
+      @if ($activePage == 'welcome')
+        @include('layouts.page_template.guest')
+      @else
+        @include('layouts.page_template.auth')
+      @endif
     @endauth
     @guest
       @include('layouts.page_template.guest')

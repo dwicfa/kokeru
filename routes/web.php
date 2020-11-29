@@ -31,4 +31,5 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 	Route::get('{page}', ['as' => 'page.index', 'uses' => 'App\Http\Controllers\PageController@index']);
 });
+Route::get('managers/{managers}', ['as' => 'managers.index', 'uses' => 'App\Http\Controllers\ManagersController@index']);
 
