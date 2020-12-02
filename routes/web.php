@@ -19,5 +19,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('managers/{managers}', ['as' => 'managers.index', 'uses' => 'App\Http\Controllers\ManagersController@index']);
+// Route::get('/dashboard', [App\Http\Controllers\CSController::class, 'index'])->name('home');
+Auth::routes();
 
+// Route::get('/dashboard', 'App\Http\Controllers\CSController@index')->name('home');
+
+Route::group(['middleware' => 'auth'], function () {
+	Route::get('{cs}', ['as' => 'cs.index', 'uses' => 'App\Http\Controllers\CSController@index']);
+});
+
+Route::get('manager/login', 'App\Http\Controllers\Auth\ManagerAuthController@getLogin')->name('manager.login');
+Route::post('manager/login', 'App\Http\Controllers\Auth\ManagerAuthController@postLogin');
+Route::middleware('auth:manager')->group(function(){
+	Route::get('manager/{manager}', ['as' => 'manager.index', 'uses' => 'App\Http\Controllers\ManagerController@index']);
+  });

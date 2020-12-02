@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 class Managers extends Authenticatable
 {
     use HasFactory, Notifiable;
+    protected $guard = 'manager';
     public $timestamps = false;
     /**
      * The attributes that are mass assignable.
