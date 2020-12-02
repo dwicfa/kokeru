@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class CS extends Authenticatable
 {
     use HasFactory, Notifiable;
-
+    public $timestamps = false;
+    protected $table = "CS";
     /**
      * The attributes that are mass assignable.
      *
@@ -37,7 +38,4 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
 }

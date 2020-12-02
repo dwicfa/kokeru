@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ManagersController extends Controller
+class CSController extends Controller
 {
-    /**
+   /**
      * Create a new controller instance.
      *
      * @return void
@@ -21,18 +21,11 @@ class ManagersController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    // public function index()
-    // {
-    //     return view('managers.dashboard');
-    // }
-    // public function profile()
-    // {
-    //     return view('managers.profile');
-    // }
+
     public function index(string $page)
     {
-        if (view()->exists("managers.{$page}")) {
-            return view("managers.{$page}");
+        if (view()->exists("cs.{$page}")) {
+            return view("cs.{$page}");
         }
         return abort(404);
     }
