@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use  App\Models\Laporan;
 
 class ManagerController extends Controller
 {
@@ -24,9 +25,29 @@ class ManagerController extends Controller
 
     public function index(string $page)
     {
-        if (view()->exists("managers.{$page}")) {
-            return view("managers.{$page}");
+        switch ($page) {
+            case 'dashboard':
+                $laporan = Laporan::where('tanggal',date('y-m-d'))
+                                    ->orderBy('id')
+                                    ->Paginate(12);
+                return view("managers.{$page}")->with('laporan',$laporan);
+                break;
+            case 'dataCS':
+                return view("managers.{$page}");
+                break;
+                case 'dataCS':
+                    return view("managers.{$page}");
+                    break;
+            case 'laporan':
+                return view("managers.{$page}");
+                break;
+            case 'profile':
+                return view("managers.{$page}");
+                break;
+            default:
+                return abort(404);
+                break;
         }
-        return abort(404);
+       
     }
 }

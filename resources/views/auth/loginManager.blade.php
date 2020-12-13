@@ -1,9 +1,8 @@
 @extends('layouts.app', [
-    'namePage' => 'admin',
+    'namePage' => 'Login Admin',
     'class' => 'sidebar-mini',
-    'activePage' => 'admin',
-    'backgroundImage' => asset('now') . "/img/bg14.jpg"
-])
+    'activePage' => 'Login Admin',
+    ])
 
 @section('content')
 <div class="container">

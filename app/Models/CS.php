@@ -38,4 +38,9 @@ class CS extends Authenticatable
      *
      * @var array
      */
+
+    public function Laporan()
+    {
+        return $this->hasMany(Laporan::class,'id_ruang');
+    }
 }

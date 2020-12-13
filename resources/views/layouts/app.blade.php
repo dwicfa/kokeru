@@ -12,6 +12,7 @@
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
+  
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <!-- CSS Files -->
@@ -19,11 +20,28 @@
   <link href="{{ asset('assets') }}/css/now-ui-dashboard.css?v=1.3.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{ asset('assets') }}/demo/demo.css" rel="stylesheet" />
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
+  
 </head>
 
 <body class="{{ $class ?? '' }}">
   <div class="wrapper">
-    @auth
+
+
+    @if ($activePage == 'welcome')
+      @include('layouts.page_template.guest')
+    @else
+      @guest
+          @include('layouts.page_template.guest')
+      @endguest 
+      @auth('web')
+          @include('layouts.page_template.auth')
+      @endauth
+      @auth('manager')
+          @include('layouts.page_template.manager')
+      @endauth
+    @endif
+    {{-- @auth
       @if ($activePage == 'welcome')
         @include('layouts.page_template.guest')
       @else
@@ -32,7 +50,7 @@
     @endauth
     @guest
       @include('layouts.page_template.guest')
-    @endguest
+    @endguest --}}
   </div>
   <!--   Core JS Files   -->
   <script src="{{ asset('assets') }}/js/core/jquery.min.js"></script>

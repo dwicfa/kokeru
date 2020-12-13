@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.app', [
+    'namePage' => 'Login CS',
+    'class' => 'login-page sidebar-mini ',
+    'activePage' => 'Login CS',
+])
 
 @section('content')
 <div class="container">

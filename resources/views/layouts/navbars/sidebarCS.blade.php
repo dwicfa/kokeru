@@ -14,19 +14,19 @@
       <div class="sidebar-wrapper" id="sidebar-wrapper">
           <ul class="nav">
           <li class="@if ($activePage == 'home') active @endif">
-              <a href="/managers/dashboard">
+              <a href="/dashboard">
               <i class="now-ui-icons design_app"></i>
               <p>{{ __('Dashboard') }}</p>
               </a>
           </li>
           <li class="@if ($activePage == 'dataCS') active @endif">
-              <a href="/managers/dataCS">
+              <a href="/dataCS">
               <i class="now-ui-icons design_bullet-list-67"></i>
               <p>{{ __('Data Cleaning Service') }}</p>
               </a>
           </li>
           <li class="@if ($activePage == 'profile') active @endif">
-              <a href="/managers/profile">
+              <a href="/profile">
               <i class="now-ui-icons users_single-02"></i>
               <p>{{ __('Profile') }}</p>
               </a>

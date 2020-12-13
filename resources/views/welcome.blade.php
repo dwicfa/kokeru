@@ -2,7 +2,6 @@
     'namePage' => 'Welcome',
     'class' => 'login-page sidebar-mini ',
     'activePage' => 'welcome',
-    'backgroundImage' => asset('assets') . "/img/bg14.jpg",
 ])
 
 @section('content')
