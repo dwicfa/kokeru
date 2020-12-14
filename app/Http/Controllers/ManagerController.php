@@ -35,9 +35,6 @@ class ManagerController extends Controller
             case 'dataCS':
                 return view("managers.{$page}");
                 break;
-                case 'dataCS':
-                    return view("managers.{$page}");
-                    break;
             case 'laporan':
                 return view("managers.{$page}");
                 break;

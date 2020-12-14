@@ -16,6 +16,6 @@ class Laporan extends Model
     }
     public function CS()
     {
-        return $this->belongsTo(CS::class,'id_ruang','id');
+        return $this->belongsTo(CS::class,'id_cs','id');
     }
 }

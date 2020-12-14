@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\RuanganController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,3 +33,5 @@ Route::post('manager/login', 'App\Http\Controllers\Auth\ManagerAuthController@po
 Route::middleware('auth:manager')->group(function(){
 	Route::get('manager/{manager}', ['as' => 'manager.index', 'uses' => 'App\Http\Controllers\ManagerController@index']);
   });
+
+// Route::resource('ruangan',RuanganController::class);

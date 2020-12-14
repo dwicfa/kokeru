@@ -10931,3 +10931,7 @@ a.text-dark:focus {
   padding-bottom: 24px;
 }
 
+.logo-normal {
+  padding-left: 10px !important;
+}
+
