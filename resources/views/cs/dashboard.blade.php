@@ -36,24 +36,13 @@
                 <h4 class="modal-title" id="myModalLabel" style="color: whitesmoke;">{{$L->ruangan->name}}</h4>
             </div>            <!-- Modal Body -->
             <div class="modal-body">
-                <div>
-                    Payment Option
-                </div>
-                <form id="frm-donation" name="frm-donation">
-                    <div class="header-btn">
-                        <div id="div-physical">
-                            <label>
-                                <input id="rdb_physical" name="rdb_donation" value="0" type="radio" checked="" class="validate[required]" data-errormessage-value-missing="Donation Type is required!">
-                                Physical Entity Donation
-                            </label>
-                        </div>
-                </form>
+                
                 <div class="modal-body">
                   <div id = 'teks'></div>
                     <div class="modal-footer" id="modal_footer">
                       <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="ion-android-close">Close</span></button>
                         <!--<input id="btnSubmit" name="btnSubmit" value="Donate" class="btn btn-default-border-blk" type="submit">-->
-                        <a id="btnDonate" class="btn btn-default-border-blk">Donate</a>
+                        <a id="btnDonate" class="btn btn-default-border-blk">Update</a>
                     </div>
                 </div>
             </div>

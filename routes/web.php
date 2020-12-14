@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RuanganController;
+use App\Http\Controllers\BuktiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,4 +34,4 @@ Route::middleware('auth:manager')->group(function(){
 	Route::get('manager/{manager}', ['as' => 'manager.index', 'uses' => 'App\Http\Controllers\ManagerController@index']);
   });
 
-// Route::resource('ruangan',RuanganController::class);
+Route::resource('bukti',BuktiController::class);

@@ -15,7 +15,11 @@ class CreateBuktiTable extends Migration
     {
         Schema::create('bukti', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('id_laporan');
+            $table->foreign('id_laporan')
+                ->references('id')->on('laporan')
+                ->onDelete('cascade');
+            $table->string('bukti');
         });
     }
 
