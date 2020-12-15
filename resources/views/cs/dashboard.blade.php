@@ -21,9 +21,6 @@
                             <p class="card-text">{{ $L->status ? 'SUDAH' : 'BELUM' }}</p>
                             <p class="card-text">{{ $L->CS->name }}</p>
                             <a href="/dashboard/upload/{{ $L->id }}" class="btn btn-primary btn-bukti">Update Status</a>
-                            {{-- <a class="btn btn-primary btn-bukti" data-nama="{{ $L->ruangan->name }}" data-id="{{ $L->id }}"
-                                data-target='#updateStatusModal' type="submit" data-toggle="modal" data-backdrop="static"
-                                data-keyboard="false">Update Status</a> --}}
                         </div>
                     </div>
                 </div>
@@ -32,36 +29,4 @@
         </div>
         {{ $laporan->links() }}
     </div>
-    {{-- <div class="modal fade" id="updateStatusModal" tabindex="-1" role="dialog" aria-hidden="true">
-        
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header" style="background: orange">
-                    <h4 class="modal-title" id="myModalLabel" style="color: whitesmoke;">Update Status</h4>
-                </div> <!-- Modal Body -->
-                <div class="modal-body">
-                    
-                  {!! Form::open(['action' => ['App\\Http\\Controllers\\BuktiController@store',"id=1"], 'method'=>'POST','enctype'=>'multipart/form-data','files'=>true]) !!}
-                  <div class="form-group">
-                    <div class="custom-file">
-                      {{Form::file('bukti',['class'=>'custom-file-input','aria-describedby'=>"inputGroupFileAddon01"])}}
-                      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                    </div>
-                  </div>
-                  
-                        <div class="modal-body">
-                            <div id='teks'></div>
-                            <div class="modal-footer" id="modal_footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal" ><span
-                                        aria-hidden="true" class="ion-android-close">Close</span></button>
-                                <!--<input id="btnSubmit" name="btnSubmit" value="Donate" class="btn btn-default-border-blk" type="submit">-->
-                                {{Form::submit('Update',['class'=>'btn btn-primary'])}}
-                            </div>
-                        </div>
-                        {!! Form::close() !!}
-                </div>
-            </div>
-        </div>
-    </div> --}}
 @endsection

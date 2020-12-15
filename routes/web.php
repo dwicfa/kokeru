@@ -31,6 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('manager/login', 'App\Http\Controllers\Auth\ManagerAuthController@getLogin')->name('manager.login');
 Route::post('manager/login', 'App\Http\Controllers\Auth\ManagerAuthController@postLogin');
 Route::middleware('auth:manager')->group(function(){
+  Route::get('manager/dashboard/bukti/{id_laporan}','App\Http\Controllers\ManagerController@getLaporan');
 	Route::get('manager/{manager}', ['as' => 'manager.index', 'uses' => 'App\Http\Controllers\ManagerController@index']);
   });
 

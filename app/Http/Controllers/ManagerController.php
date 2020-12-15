@@ -47,4 +47,8 @@ class ManagerController extends Controller
         }
        
     }
+    public function getlaporan($id_laporan){
+        $laporan = Laporan::find($id_laporan);
+        return view('managers.bukti')->with('laporan',$laporan);
+    }
 }
