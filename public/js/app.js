@@ -37300,9 +37300,11 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // window
 // });
 
 
-$(document).on("click", ".btn-bukti", function () {
-  var eventId = $(this).data('val');
-  document.getElementById("teks").innerHTML = eventId;
+$('#inputGroupFile01').on('change', function () {
+  //get the file name
+  var fileName = $(this).val(); //replace the "Choose a file" label
+
+  $(this).next('.custom-file-label').html(fileName.split('\\').pop().split('/').pop());
 });
 
 /***/ }),

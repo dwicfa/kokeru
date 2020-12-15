@@ -17,7 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
 
 // Route::get('/dashboard', [App\Http\Controllers\CSController::class, 'index'])->name('home');
 Auth::routes();
@@ -25,7 +24,8 @@ Auth::routes();
 // Route::get('/dashboard', 'App\Http\Controllers\CSController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('{cs}', ['as' => 'cs.index', 'uses' => 'App\Http\Controllers\CSController@index']);
+  Route::get('{cs}', ['as' => 'cs.index', 'uses' => 'App\Http\Controllers\CSController@index']);
+  Route::get('dashboard/upload/{id_laporan}','App\Http\Controllers\CSController@getLaporan');
 });
 
 Route::get('manager/login', 'App\Http\Controllers\Auth\ManagerAuthController@getLogin')->name('manager.login');

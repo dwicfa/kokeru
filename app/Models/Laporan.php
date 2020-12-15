@@ -18,4 +18,10 @@ class Laporan extends Model
     {
         return $this->belongsTo(CS::class,'id_cs','id');
     }
+    public function Bukti()
+    {
+        return $this->hasMany(Bukti::class,'id_laporan');
+    }
+
+    
 }

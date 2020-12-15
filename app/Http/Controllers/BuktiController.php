@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use  App\Models\Laporan;
+use  App\Models\Bukti;
+use Validator;
 
 class BuktiController extends Controller
 {
@@ -40,14 +42,21 @@ class BuktiController extends Controller
     public function store(Request $request)
     {
         //
+        $laporan = Laporan::find($request->id);
         $this->validate($request,[
-            'bukti' =>'nullable|max:10000'
+            'bukti' =>'required|max:10000|mimes:png,jpeg,jpg,bmp,svg,mov,mp4,avi,wmv'
         ]);
         if($request->hasFile('bukti')){
-            
+            $file =  $request->file('bukti');
+            $extension = $file->getClientOriginalExtension();
+            $filename = $laporan->id."_".date("Ymd")."_".($laporan->bukti->max('id')+1).".".$extension;
+            $path = $file->storeAs('public/bukti',$filename);
+            $bukti = new Bukti;
+            $bukti->bukti = $filename;
+            $bukti->id_laporan = $laporan->id;
+            $bukti->save();
         }
-
-        return $request;
+        return back();
     }
 
     /**
@@ -58,7 +67,7 @@ class BuktiController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -92,6 +101,10 @@ class BuktiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $bukti = Bukti::find($id);
+        $bukti->delete();
+        return back();
     }
+
+    
 }

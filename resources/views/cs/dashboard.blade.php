@@ -12,7 +12,7 @@
         <div class="row">
             @foreach ($laporan as $L)
                 <div class="col-3">
-                    <div class="card ruangan {{ $L->status ? 'ruangan-sudah' : 'ruangan-belum' }}">
+                    <div class="card ruangan {{ count($L->bukti)>0 ? 'ruangan-sudah' : 'ruangan-belum' }}">
                         <div class="card-header text-white">
                             <h5 class="card-title">{{ $L->ruangan->name }}</h5>
                         </div>
@@ -20,9 +20,10 @@
 
                             <p class="card-text">{{ $L->status ? 'SUDAH' : 'BELUM' }}</p>
                             <p class="card-text">{{ $L->CS->name }}</p>
-                            <a href="#" class="btn btn-primary btn-bukti" data-val="{{ $L->id }}"
+                            <a href="/dashboard/upload/{{ $L->id }}" class="btn btn-primary btn-bukti">Update Status</a>
+                            {{-- <a class="btn btn-primary btn-bukti" data-nama="{{ $L->ruangan->name }}" data-id="{{ $L->id }}"
                                 data-target='#updateStatusModal' type="submit" data-toggle="modal" data-backdrop="static"
-                                data-keyboard="false">Update Status</a>
+                                data-keyboard="false">Update Status</a> --}}
                         </div>
                     </div>
                 </div>
@@ -31,7 +32,8 @@
         </div>
         {{ $laporan->links() }}
     </div>
-    <div class="modal fade" id="updateStatusModal" tabindex="-1" role="dialog" aria-hidden="true">
+    {{-- <div class="modal fade" id="updateStatusModal" tabindex="-1" role="dialog" aria-hidden="true">
+        
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <!-- Modal Header -->
@@ -40,8 +42,7 @@
                 </div> <!-- Modal Body -->
                 <div class="modal-body">
                     
-                  {!! Form::open(['action' => ['App\\Http\\Controllers\\BuktiController@store','id='.{{$L->id}}], 'method'=>'POST','enctype'=>'multipart/data']) !!}
-                  {{-- {{Input::hidden('id', test) --}}
+                  {!! Form::open(['action' => ['App\\Http\\Controllers\\BuktiController@store',"id=1"], 'method'=>'POST','enctype'=>'multipart/form-data','files'=>true]) !!}
                   <div class="form-group">
                     <div class="custom-file">
                       {{Form::file('bukti',['class'=>'custom-file-input','aria-describedby'=>"inputGroupFileAddon01"])}}
@@ -62,5 +63,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection

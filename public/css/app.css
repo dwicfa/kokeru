@@ -10935,3 +10935,11 @@ a.text-dark:focus {
   padding-left: 10px !important;
 }
 
+.form-upload {
+  padding-top: 16px;
+}
+
+.foto-bukti {
+  height: 10rem;
+}
+

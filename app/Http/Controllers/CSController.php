@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use  App\Models\Laporan;
+use  App\Models\Bukti;
 use Auth;
 
 class CSController extends Controller
@@ -43,4 +44,8 @@ class CSController extends Controller
        
     }
     
+    public function getlaporan($id_laporan){
+        $laporan = Laporan::find($id_laporan);
+        return view('cs.upload')->with('laporan',$laporan);
+    }
 }

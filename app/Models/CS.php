@@ -41,6 +41,6 @@ class CS extends Authenticatable
 
     public function Laporan()
     {
-        return $this->hasMany(Laporan::class,'id_ruang');
+        return $this->hasMany(Laporan::class,'id_cs');
     }
 }
