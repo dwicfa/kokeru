@@ -27,7 +27,7 @@
 <body class="{{ $class ?? '' }}">
   <div class="wrapper">
 
-
+    
     @if ($activePage == 'welcome')
       @include('layouts.page_template.guest')
     @else

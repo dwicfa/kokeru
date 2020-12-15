@@ -40,6 +40,14 @@ class BuktiController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,[
+            'bukti' =>'nullable|max:10000'
+        ]);
+        if($request->hasFile('bukti')){
+            
+        }
+
+        return $request;
     }
 
     /**
