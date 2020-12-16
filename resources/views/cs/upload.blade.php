@@ -9,7 +9,8 @@
         @include('alerts.errors')
         <h3 class="title-dashboard title">Upload Bukti Ruangan</h3>
         <h4 class="title">Ruangan: {{$laporan->ruangan->name}}</h4>
-        <h4 class="title">Tanggal: {{$laporan->tanggal}}</h4>
+        <h4 class="title">Tanggal:  {{ \carbon\Carbon::parse($laporan->tanggal)->isoFormat('dddd') }}, {{ \carbon\Carbon::parse($laporan->tanggal)->isoFormat('DD MMMM YYYY') }}</h4>
+        <h4 class="title">Nama Petugas: {{ $laporan->cs->name }}</h4>
         @if(count($laporan->bukti )<5)
         {!! Form::open(['action' => ['App\\Http\\Controllers\\BuktiController@store',"id=$laporan->id"], 'method' => 'POST', 'enctype' =>
         'multipart/form-data', 'files' => true,'class'=>'form-upload']) !!}

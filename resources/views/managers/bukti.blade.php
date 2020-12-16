@@ -9,8 +9,9 @@
         @include('alerts.errors')
         <h3 class="title-dashboard title">Bukti Ruangan</h3>
         <h4 class="title">Ruangan: {{ $laporan->ruangan->name }}</h4>
-        <h4 class="title">Tanggal: {{ $laporan->tanggal }}</h4>
-        <h4 class="title">Nama CS: {{ $laporan->cs->name }}</h4>
+        
+        <h4 class="title">Tanggal:  {{ \carbon\Carbon::parse($laporan->tanggal)->isoFormat('dddd') }}, {{ \carbon\Carbon::parse($laporan->tanggal)->isoFormat('DD MMMM YYYY') }}</h4>
+        <h4 class="title">Nama Petugas: {{ $laporan->cs->name }}</h4>
 
         @if (count($laporan->bukti) > 0)
             <div class="row row-cols-5">

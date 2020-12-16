@@ -14,7 +14,12 @@ use App\Http\Controllers\BuktiController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  $laporan = App\Models\Laporan::where('tanggal',date('y-m-d'))
+                      ->orderBy('id')
+                      ->Paginate(12);
+  return view("welcome")->with('laporan',$laporan);
+                
+    
 });
 
 
