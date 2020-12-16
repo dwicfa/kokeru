@@ -41,7 +41,7 @@ class BuktiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
         $laporan = Laporan::find($request->id);
         $this->validate($request,[
             'bukti' =>'required|max:10000|mimes:png,jpeg,jpg,bmp,svg,mov,mp4,avi,wmv'
@@ -54,8 +54,11 @@ class BuktiController extends Controller
             $bukti = new Bukti;
             $bukti->bukti = $filename;
             $bukti->id_laporan = $laporan->id;
+            $laporan->status = 1;
+            $laporan->save();
             $bukti->save();
         }
+        
         return back();
     }
 
@@ -100,8 +103,18 @@ class BuktiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+    {   
+        
         $bukti = Bukti::find($id);
+        $laporan = $bukti->laporan;
+        
+        if(count($laporan->bukti)>1){
+            $laporan->status = 1;
+            $laporan->save();
+        }else{
+            $laporan->status = 0;
+            $laporan->save();
+        }
         $bukti->delete();
         return back();
     }

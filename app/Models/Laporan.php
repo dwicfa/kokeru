@@ -10,6 +10,7 @@ class Laporan extends Model
     use HasFactory;
     protected $table = "Laporan";
     public $primaryKey = 'id';
+    public $timestamps = false;
     public function Ruangan()
     {
         return $this->belongsTo(Ruangan::class,'id_ruang','id');
