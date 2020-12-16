@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use  App\Models\Laporan;
+use Carbon\Carbon;
 
 class ManagerController extends Controller
 {
@@ -14,6 +15,9 @@ class ManagerController extends Controller
      */
     public function __construct()
     {
+        $this->reportDate = new Carbon();
+        $this->now = new Carbon();
+        $this->status = 'semua';
         $this->middleware('auth');
     }
 
@@ -36,6 +40,13 @@ class ManagerController extends Controller
                 return view("managers.{$page}");
                 break;
             case 'laporan':
+                $laporan = Laporan::all();
+                return view('managers/laporan', [
+                    'reportDate' => new Carbon(),
+                    'now' => new Carbon(),
+                    'status' => 'semua',
+                    'laporan' => Laporan::where([['tanggal',date('y-m-d')]])->orderBy('id')->get()
+                ], compact('laporan'));
                 return view("managers.{$page}");
                 break;
             case 'profile':
@@ -51,4 +62,18 @@ class ManagerController extends Controller
         $laporan = Laporan::find($id_laporan);
         return view('managers.bukti')->with('laporan',$laporan);
     }
+    public function pilihTanggal(Request $request){
+            if($request->status == "semua"){
+                $laporan = Laporan::where([['tanggal',$request->tanggal]])->orderBy('id')->get();
+            }else{
+                $laporan = Laporan::where([['tanggal',$request->tanggal],['status', $request->status == "sudah"?1:0 ]])->orderBy('id')->get();
+            }
+            
+            return view('managers/laporan', [
+                'reportDate' => Carbon::parse($request->tanggal),
+                'now' => new Carbon(),
+                'status' => $request->status,
+                'laporan' => $laporan
+            ], compact('laporan'));
+        }
 }
