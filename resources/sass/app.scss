@@ -6,3 +6,42 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+
+.ruangan-sudah .card-header{
+    background-color: #00AA9E !important;
+    text-align: center
+}
+.ruangan-belum .card-header{
+    background-color: #e01340 !important;
+    text-align: center
+}
+
+.ruangan{
+    text-align: center;
+}  
+
+.ruangan  .card-text{
+    margin: 0px;
+} 
+
+.title-dashboard{
+    text-align: center !important;
+    padding-top: 24px;
+}
+
+.subtitle-dashboard{
+    text-align: center !important;
+    padding-bottom: 24px;
+}
+
+.logo-normal{
+    padding-left: 10px !important;
+}
+.form-upload{
+    padding-top: 16px;
+}
+
+.foto-bukti{
+    height: 10rem;
+}

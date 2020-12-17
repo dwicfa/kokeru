@@ -2,7 +2,7 @@
 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
     @csrf
 </form>
-@include('layouts.navbars.sidebar')
+@include('layouts.navbars.sidebarCS')
 <div class="main-panel">
     @include('layouts.navbars.navs.auth')
     @yield('content')

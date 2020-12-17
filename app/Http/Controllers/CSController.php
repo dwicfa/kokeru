@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use  App\Models\Laporan;
+use  App\Models\Bukti;
+use Auth;
 
 class CSController extends Controller
 {
@@ -24,9 +26,26 @@ class CSController extends Controller
 
     public function index(string $page)
     {
-        if (view()->exists("cs.{$page}")) {
-            return view("cs.{$page}");
+        switch ($page) {
+            case 'dashboard':
+                $laporan = Laporan::where([['tanggal',date('y-m-d')],['id_CS',Auth::id()]])
+                                    ->orderBy('id')
+                                    ->Paginate(12);
+                // return $laporan;
+                return view("CS.{$page}")->with('laporan',$laporan);
+                break;
+            case 'profile':
+                return view("CS.{$page}");
+                break;
+            default:
+                return abort(404);
+                break;
         }
-        return abort(404);
+       
+    }
+    
+    public function getlaporan($id_laporan){
+        $laporan = Laporan::find($id_laporan);
+        return view('cs.upload')->with('laporan',$laporan);
     }
 }

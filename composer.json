@@ -9,13 +9,18 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "barryvdh/laravel-dompdf": "^0.8.7",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel-frontend-presets/now-ui-dashboard": "^1.0",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "^3.1"
+        "laravel/ui": "^3.1",
+        "laravelcollective/html": "^6.2",
+        "maatwebsite/excel": "^3.1",
+        "mxl/laravel-job": "^1.2",
+        "niklasravnsborg/laravel-pdf": "^4.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
