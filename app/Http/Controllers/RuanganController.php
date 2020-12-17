@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Ruangan;
+use App\Models\Laporan;
 
 class RuanganController extends Controller
 {
@@ -23,7 +25,7 @@ class RuanganController extends Controller
      */
     public function create()
     {
-        //
+        return 1;
     }
 
     /**
@@ -34,7 +36,22 @@ class RuanganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'nama_ruang' =>'required'
+        ]);
+        if(count(Ruangan::where('name',$request->nama_ruang)->get())>0){
+            return back()->with('error',"Nama ruangan sudah ada");
+        }
+        $ruang = new Ruangan();
+        $ruang->name = $request->nama_ruang;
+        $ruang->save();
+        $laporan = new Laporan();
+        $laporan->id_cs = $request->id_cs;
+        $laporan->tanggal = date("Y-m-d");
+        $laporan->id_ruang = $ruang->id;
+        $laporan->status = 0;
+        $laporan->save();
+        return back()->with('success',"Ruangan berhasil ditambahkan");
     }
 
     /**
@@ -68,7 +85,17 @@ class RuanganController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'nama_ruang' =>'required:unique:Ruangan'
+        ]);
+        
+        $ruang = Ruangan::find($id);
+        $laporan = $ruang->laporan->where("tanggal",date("Y-m-d"))->first();
+        $ruang->name = $request->nama_ruang;
+        $ruang->save();
+        $laporan->id_cs = $request->id_cs;
+        $laporan->save();
+        return back()->with('success',"Ruangan berhasil di update");
     }
 
     /**
@@ -79,6 +106,9 @@ class RuanganController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ruangan = Ruangan::find($id);
+        $ruangan->delete();
+        
+        return back()->with('success','ruangan berhasil dihapus');
     }
 }

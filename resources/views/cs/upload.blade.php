@@ -7,6 +7,7 @@
 @section('content')
     <div class="container">
         @include('alerts.errors')
+        @include('alerts.success')
         <h3 class="title-dashboard title">Upload Bukti Ruangan</h3>
         <h4 class="title">Ruangan: {{$laporan->ruangan->name}}</h4>
         <h4 class="title">Tanggal:  {{ \carbon\Carbon::parse($laporan->tanggal)->isoFormat('dddd') }}, {{ \carbon\Carbon::parse($laporan->tanggal)->isoFormat('DD MMMM YYYY') }}</h4>
@@ -47,7 +48,7 @@
                             <form action="{{ url("/bukti/" . $b->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <input type="submit" value="Hapus" class="btn btn-danger btn-md" onclick="return confirm('Yakin akan menghapus bukti?')">
+                                <input type="submit" value="Hapus" class="btn btn-danger btn-md" onclick="return confirm('Apakah anda yakin akan menghapus bukti?')">
                             </form>
                         </div>
                     </div>

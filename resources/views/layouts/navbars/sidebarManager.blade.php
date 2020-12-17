@@ -22,18 +22,24 @@
             <p>{{ __('Data Cleaning Service') }}</p>
             </a>
         </li>
+        <li class="@if ($activePage == 'ruangan') active @endif">
+            <a href="/manager/ruangan">
+            <i class="now-ui-icons design_bullet-list-67"></i>
+            <p>{{ __('Data Ruangan') }}</p>
+            </a>
+        </li>
         <li class="@if ($activePage == 'laporan') active @endif">
             <a href="/manager/laporan">
             <i class="now-ui-icons design_bullet-list-67"></i>
             <p>{{ __('Laporan') }}</p>
             </a>
         </li>
-          <li class="@if ($activePage == 'profile') active @endif">
+          {{-- <li class="@if ($activePage == 'profile') active @endif">
               <a href="/manager/profile">
               <i class="now-ui-icons users_single-02"></i>
               <p>{{ __('Profile') }}</p>
               </a>
-          </li>
+          </li> --}}
           
           </ul>
       </div>

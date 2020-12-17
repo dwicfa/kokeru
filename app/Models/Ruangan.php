@@ -10,7 +10,7 @@ class Ruangan extends Model
     use HasFactory;
     protected $table = "ruangan";
     public $primaryKey = 'id';
-
+    public $timestamps = false;
     public function Laporan()
     {
         return $this->hasMany(Laporan::class,'id_ruang');
