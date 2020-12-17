@@ -38,7 +38,7 @@
                                 </form>
 
                                 {{ Form::open(['action' => ['App\\Http\\Controllers\\RuanganController@destroy', $r->id], 'method' => 'DELETE']) }}
-                                {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+                                {{ Form::submit('Delete', ['class' => 'btn btn-danger','onclick'=>"return confirm('Apakah anda yakin akan menghapus bukti?')"]) }}
                                 {{ Form::close() }}
                             </div>
                         </td>
