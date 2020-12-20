@@ -18,6 +18,7 @@ class LaporanExport implements FromView
     }
     public function view(): View
     {
+        $this->tanggal = \Carbon\Carbon::parse($this->tanggal)->Format('Y/m/d');
         if($this->status == "semua"){
             $laporan =  Laporan::where([['tanggal',$this->tanggal]])->get();
         }else{

@@ -1,23 +1,24 @@
 @extends('layouts.app', [
-    'namePage' => 'profile',
-    'class' => 'sidebar-mini',
-    'activePage' => 'profile',
+'namePage' => 'Edit Data CS',
+'class' => 'sidebar-mini',
+'activePage' => 'dataCS',
 ])
+
 
 @section('content')
 @include('alerts.errors')
 @include('alerts.success')
-    <h3 class="title-dashboard title">Edit Profile</h3>
+    <h3 class="title-dashboard title">Edit Data CS</h3>
     <hr>
     <div class="container">
-        {{ Form::open(['action' => ['App\\Http\\Controllers\\ManagerController@update',$manager->id], 'method' => 'PUT']) }}
+        {{ Form::open(['action' => ['App\\Http\\Controllers\\CSController@update',$cs->id], 'method' => 'PUT']) }}
         <div class="form-group">
-            {{ Form::label('name', 'Nama Manager: ', ['class' => 'form-label']) }}
-            {{ Form::text('name', $manager->name, ['class' => 'form-control']) }}
+            {{ Form::label('nama_cs', 'Nama CS: ', ['class' => 'form-label']) }}
+            {{ Form::text('nama_cs', $cs->name, ['class' => 'form-control']) }}
         </div>
         <div class="form-group">
             {{ Form::label('email', 'Email: ', ['class' => 'form-label']) }}
-            {{ Form::text('email', $manager->email, ['class' => 'form-control']) }}
+            {{ Form::text('email', $cs->email, ['class' => 'form-control']) }}
         </div>
         <div class="form-group">
             {{ Form::label('password', 'Password: ', ['class' => 'form-label']) }}

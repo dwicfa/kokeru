@@ -8,7 +8,7 @@
 @section('content')
 @include('alerts.errors')
 @include('alerts.success')
-    <h3 class="title-dashboard title">Tambah Data CS</h3>
+    <h3 class="title-dashboard title">Tambah Data Ruangan</h3>
     <hr>
     <div class="container">
         {{ Form::open(['action' => ['App\\Http\\Controllers\\RuanganController@store'], 'method' => 'POST']) }}

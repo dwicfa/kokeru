@@ -116,7 +116,7 @@ class BuktiController extends Controller
             $laporan->save();
         }
         $bukti->delete();
-        return back()->with('success','Bukti ruangan berhasil diupload');
+        return back()->with('success','Bukti ruangan berhasil dihapus');
     }
 
     
