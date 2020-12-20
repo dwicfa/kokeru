@@ -93,8 +93,18 @@ class RuanganController extends Controller
         $laporan = $ruang->laporan->where("tanggal",date("Y-m-d"))->first();
         $ruang->name = $request->nama_ruang;
         $ruang->save();
-        $laporan->id_cs = $request->id_cs;
-        $laporan->save();
+        if(!empty($laporan)){
+            $laporan->id_cs = $request->id_cs;
+            $laporan->save();
+        }else{
+            $laporan = new Laporan();
+            $laporan->id_ruang = $ruang->id;
+            $laporan->id_cs = $request->id_cs;
+            $laporan->tanggal = date('Y-m-d');
+            $laporan->status = 0;
+            $laporan->save();
+        }
+        
         return back()->with('success',"Ruangan berhasil di update");
     }
 

@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 use  App\Models\Laporan;
 use  App\Models\Ruangan;
 use  App\Models\CS;
+use  App\Models\Managers;
 use Carbon\Carbon;
+use Hash;
 use DB;
 use Excel;
 use PDF;
@@ -61,7 +64,8 @@ class ManagerController extends Controller
                 ], compact('laporan'));
                 break;
             case 'profile':
-                return view("managers.{$page}");
+                $manager = Managers::find(AUTH::id());
+                return view("managers.{$page}")->with('manager',$manager);
                 break;
             default:
                 return abort(404);
@@ -101,16 +105,30 @@ class ManagerController extends Controller
             return Excel::download(new LaporanExport($tanggal,$status), (new Carbon()).'.xlsx');
         }
         public function exportPdf($tanggal,$status){
+            $tanggal = \Carbon\Carbon::parse($tanggal)->Format('Y/m/d');
             if($this->status == "semua"){
                 $laporan =  Laporan::where([['tanggal',$tanggal]])->get();
             }else{
                 $laporan = Laporan::where([['tanggal',$tanggal],['status',$status == "sudah"?1:0]])->get();
             }
             
-            // $pdf = PDF::loadHTML('<h1>{{$laporan}}</h1>',['laporan'=>$laporan,'tanggal'=>$tanggal]);
-            // return $pdf->stream();
             $pdf = PDF::loadView('managers.exportView', ['laporan'=>$laporan,'tanggal'=>$tanggal]);
 	        return $pdf->download((new Carbon()).'.pdf');
             
         }
+        public function update(Request $request, $id){
+            $this->validate($request,[
+                'name' =>'required|string|max:255',
+                'email' => ' required|unique:CS'.($id ? ",id,$id" : '').'|email|max:255|',
+                'password' => 'required|min:8'
+            ]);
+            $manager = Managers::find($id);
+            $manager->name = $request->name;
+            $manager->email = $request->email;
+            $manager->password = Hash::make($request->password);
+            $manager->save();
+            return back()->with('success',"Profile berhasil diubah");
+        }
+       
+
 }

@@ -30,7 +30,8 @@
                         <?php $i = $i + 1; ?>
                         <th class="text-center"><?php echo $i; ?></th>
                         <td>{{ $r->name }}</td>
-                        <td>{{ $r->laporan->where('tanggal', date('Y-m-d'))->first()->cs->name }}</td>
+                        <td>{{ empty($r->laporan->where('tanggal', date('Y-m-d'))->first())?'Tidak ada CS':
+                        $r->laporan->where('tanggal', date('Y-m-d'))->first()->cs->name }}</td>
                         <td class="text-center">
                             <div class="row">
                                 <form action="{{ url('manager/ruangan/edit/' . $r->id) }}" method="GET">
@@ -38,7 +39,7 @@
                                 </form>
 
                                 {{ Form::open(['action' => ['App\\Http\\Controllers\\RuanganController@destroy', $r->id], 'method' => 'DELETE']) }}
-                                {{ Form::submit('Delete', ['class' => 'btn btn-danger','onclick'=>"return confirm('Apakah anda yakin akan menghapus bukti?')"]) }}
+                                {{ Form::submit('Delete', ['class' => 'btn btn-danger','onclick'=>"return confirm('Apakah anda yakin akan menghapus ruangan?')"]) }}
                                 {{ Form::close() }}
                             </div>
                         </td>

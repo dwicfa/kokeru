@@ -34,12 +34,12 @@
             <p>{{ __('Laporan') }}</p>
             </a>
         </li>
-          {{-- <li class="@if ($activePage == 'profile') active @endif">
+          <li class="@if ($activePage == 'profile') active @endif">
               <a href="/manager/profile">
               <i class="now-ui-icons users_single-02"></i>
               <p>{{ __('Profile') }}</p>
               </a>
-          </li> --}}
+          </li>
           
           </ul>
       </div>
